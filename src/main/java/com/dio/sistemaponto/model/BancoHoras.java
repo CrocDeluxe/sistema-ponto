@@ -1,9 +1,10 @@
 package com.dio.sistemaponto.model;
 
 import lombok.*;
-
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
+@Entity
 public class BancoHoras {
 
     @AllArgsConstructor
@@ -22,13 +24,13 @@ public class BancoHoras {
     @Embeddable
     public class BancoHorasId implements Serializable {
         private Long idBancoHoras;
-        private Long idMovimento;
+        private Long idMovimentacao;
         private Long idUsuario;
     }
 
+    @Id
     @EmbeddedId
     private BancoHorasId id;
-    //private String usuario; <- Desnecessário
     private LocalDateTime dataTrabalhada;
     private BigDecimal quantidadeHorasTrabalhadas;
     private BigDecimal saldoHorasTrabalhadas;
